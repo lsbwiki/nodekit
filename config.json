@@ -1,0 +1,68 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "protocol": "socks",
+      "settings": {
+        "auth": "password",
+        "accounts": [
+          {
+            "user": "myuser77",
+            "pass": "mypass88"
+          }
+        ],
+        "udp": false
+      },
+      "sniffing": {
+        "enabled": false
+      },
+      "allocate": {
+        "strategy": "always",
+        "concurrency": 3,
+        "refresh": 3
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpFastOpen": true,
+          "tcpNoDelay": true,
+          "tcpKeepAliveIdle": 20,
+          "mark": 255
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpFastOpen": true,
+          "tcpNoDelay": true,
+          "tcpKeepAliveIdle": 20
+        }
+      }
+    }
+  ],
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 3,
+        "connIdle": 600,
+        "uplinkOnly": 1,
+        "downlinkOnly": 1,
+        "bufferSize": 8192
+      }
+    },
+    "system": {
+      "statsInboundUplink": false,
+      "statsInboundDownlink": false
+    }
+  }
+}
