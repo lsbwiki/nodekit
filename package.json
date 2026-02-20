@@ -1,0 +1,9 @@
+{
+  "name": "flux-xray",
+  "version": "1.0.0",
+  "description": "xray on flux",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'Flux Orbit will ignore this because of RUN_COMMAND'"
+  }
+}
