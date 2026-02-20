@@ -1,0 +1,12 @@
+{
+  "name": "node-json-toolkit",
+  "version": "1.0.0",
+  "description": "Utility toolkit",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "socksv5": "^0.0.6"
+  }
+}
