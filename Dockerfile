@@ -1,8 +1,7 @@
 FROM teddysun/xray:latest
 WORKDIR /app
 COPY . .
-# 赋予执行权限，防止 exit status 2
+# 这一行是关键：确保二进制文件具有执行权限
 RUN chmod +x /usr/bin/xray
-EXPOSE 1080
-# 使用绝对路径启动
+# 即使我们通过变量启动，也留一手默认指令
 CMD ["/usr/bin/xray", "-c", "/app/config.json"]
