@@ -18,8 +18,7 @@
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
-        "metadataOnly": false
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "sockopt": {
@@ -32,9 +31,6 @@
   "outbounds": [
     {
       "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
       "streamSettings": {
         "sockopt": {
           "tcpFastOpen": true,
