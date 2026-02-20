@@ -1,11 +1,13 @@
-# 使用轻量且高性能的 Xray 官方镜像
 FROM teddysun/xray:latest
 
-# 将本地的优化配置文件拷贝到容器指定路径
-COPY config.json /etc/xray/config.json
+# 设置工作目录
+WORKDIR /app
 
-# 暴露 SOCKS5 代理端口
+# 将当前目录所有文件（包含 config.json）拷贝进去
+COPY . .
+
+# 暴露端口
 EXPOSE 1080
 
-# 启动命令：指定配置文件运行
-CMD ["xray", "-c", "/etc/xray/config.json"]
+# 启动命令
+CMD ["xray", "-c", "./config.json"]
