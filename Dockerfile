@@ -1,7 +1,7 @@
 FROM teddysun/xray:latest
 WORKDIR /app
+# 复制所有文件（包括你的 config.json）
 COPY . .
-# 这一行是关键：确保二进制文件具有执行权限
-RUN chmod +x /usr/bin/xray
-# 即使我们通过变量启动，也留一手默认指令
-CMD ["/usr/bin/xray", "-c", "/app/config.json"]
+# 这一行是关键：把 xray 从系统目录强行复制到当前 /app 目录
+RUN cp /usr/bin/xray /app/xray && chmod +x /app/xray
+EXPOSE 1080
