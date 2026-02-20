@@ -1,13 +1,8 @@
 FROM teddysun/xray:latest
-
-# 设置工作目录
 WORKDIR /app
-
-# 将当前目录所有文件（包含 config.json）拷贝进去
 COPY . .
-
-# 暴露端口
+# 赋予执行权限，防止 exit status 2
+RUN chmod +x /usr/bin/xray
 EXPOSE 1080
-
-# 启动命令
-CMD ["xray", "-c", "./config.json"]
+# 使用绝对路径启动
+CMD ["/usr/bin/xray", "-c", "/app/config.json"]
