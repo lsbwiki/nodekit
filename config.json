@@ -14,55 +14,33 @@
             "pass": "mypass88"
           }
         ],
-        "udp": false
+        "udp": true
       },
       "sniffing": {
-        "enabled": false
-      },
-      "allocate": {
-        "strategy": "always",
-        "concurrency": 3,
-        "refresh": 3
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "metadataOnly": false
       },
       "streamSettings": {
         "sockopt": {
           "tcpFastOpen": true,
-          "tcpNoDelay": true,
-          "tcpKeepAliveIdle": 20,
-          "mark": 255
+          "tcpNoDelay": true
         }
       }
     }
   ],
   "outbounds": [
     {
-      "tag": "direct",
       "protocol": "freedom",
       "settings": {
-        "domainStrategy": "UseIPv4"
+        "domainStrategy": "UseIP"
       },
       "streamSettings": {
         "sockopt": {
           "tcpFastOpen": true,
-          "tcpNoDelay": true,
-          "tcpKeepAliveIdle": 20
+          "tcpNoDelay": true
         }
       }
     }
-  ],
-  "policy": {
-    "levels": {
-      "0": {
-        "handshake": 3,
-        "connIdle": 600,
-        "uplinkOnly": 1,
-        "downlinkOnly": 1,
-        "bufferSize": 8192
-      }
-    },
-    "system": {
-      "statsInboundUplink": false,
-      "statsInboundDownlink": false
-    }
-  }
+  ]
 }
