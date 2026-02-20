@@ -1,0 +1,9 @@
+{
+  "name": "flux-colombia-xray",
+  "version": "1.0.0",
+  "description": "High-performance Xray on FluxCloud",
+  "main": "index.js",
+  "scripts": {
+    "start": "xray -c config.json"
+  }
+}
