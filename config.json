@@ -1,21 +1,28 @@
 {
   "log": {
-    "loglevel": "warning"
+    "loglevel": "debug" 
   },
   "inbounds": [
     {
-      "port": 8080,
-      "protocol": "socks",
+      "port": 1080,
+      "protocol": "vless",
       "settings": {
-        "auth": "noauth",
-        "udp": false
+        "clients": [
+          {
+            "id": "550e8400-e29b-41d4-a716-446655440000"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none" 
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
-      "settings": {}
+      "protocol": "freedom"
     }
   ]
 }
