@@ -1,28 +1,42 @@
 {
   "log": {
-    "loglevel": "debug" 
+    "loglevel": "warning"
   },
   "inbounds": [
     {
       "port": 1080,
-      "protocol": "vless",
+      "protocol": "socks",
       "settings": {
-        "clients": [
+        "auth": "password",
+        "accounts": [
           {
-            "id": "550e8400-e29b-41d4-a716-446655440000"
+            "user": "myuser77",
+            "pass": "mypass88"
           }
         ],
-        "decryption": "none"
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "none" 
+        "sockopt": {
+          "tcpFastOpen": true,
+          "tcpNoDelay": true
+        }
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "streamSettings": {
+        "sockopt": {
+          "tcpFastOpen": true,
+          "tcpNoDelay": true
+        }
+      }
     }
   ]
 }
