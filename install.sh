@@ -1,31 +1,19 @@
-{
-  "log": { "loglevel": "none" },
-  "inbounds": [
-    {
-      "port": 1080,
-      "protocol": "vless",
-      "settings": {
-        "clients": [
-          {
-            "id": "550e8400-e29b-41d4-a716-446655440000"
-            // 这里删掉了 flow，不再使用 vision
-          }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "show": false,
-          "dest": "www.microsoft.com:443",
-          "xver": 0,
-          "serverNames": ["www.microsoft.com"],
-          "privateKey": "mC3_T0E1kS9b8e7v6r5t4y3u2i1o0p9a8s7d6f5g4h3=",
-          "shortIds": ["6f2c7d8e"]
-        }
-      }
-    }
-  ],
-  "outbounds": [{ "protocol": "freedom" }]
-}
+#!/bin/sh
+
+# 定义 Xray 版本
+XRAY_VERSION="1.8.4"
+
+# 1. 根据架构下载 Xray (Flux 免费版通常是 amd64)
+echo "Downloading Xray v${XRAY_VERSION}..."
+curl -L -H "Cache-Control: no-cache" -o xray.zip https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip
+
+# 2. 解压
+unzip -o xray.zip
+chmod +x xray
+
+# 3. 删除压缩包节省空间
+rm xray.zip
+
+# 4. 运行 Xray
+echo "Starting Xray..."
+./xray -c config.json
