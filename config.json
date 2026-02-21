@@ -21,8 +21,9 @@
         "destOverride": ["http", "tls"]
       },
       "streamSettings": {
+        "network": "tcp",
         "sockopt": {
-          "tcpFastOpen": true,
+          "tcpFastOpen": false,  // 必须改为 false
           "tcpNoDelay": true
         }
       }
@@ -32,8 +33,9 @@
     {
       "protocol": "freedom",
       "streamSettings": {
+        "network": "tcp",
         "sockopt": {
-          "tcpFastOpen": true,
+          "tcpFastOpen": false, // 必须改为 false
           "tcpNoDelay": true
         }
       }
